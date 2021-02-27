@@ -5,6 +5,10 @@ const Filter = require("node-image-filter");
 const stream = require("stream");
 const fs = require("fs");
 
+fs.mkdir(path.join(__dirname, "/temp"), (err) => {
+	if (err) console.log(err);
+});
+
 const app = express();
 
 app.use("/image/", (req, res, next) => {
@@ -25,9 +29,9 @@ app.use("/blur/images/:id", (req, res, next) => {
 });
 
 app.use("/images/:id", (req, res, next) => {
-  console.log("id specific");
-  const id = req.params.id;
-  console.log(id);
+	console.log("id specific");
+	const id = req.params.id;
+	console.log(id);
 	let imagePath = path.join(__dirname, `./images/img${id}.jpg`);
 	return invertImage(imagePath, next);
 });
