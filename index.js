@@ -5,10 +5,6 @@ const Filter = require("node-image-filter");
 const stream = require("stream");
 const fs = require("fs");
 
-fs.mkdir(path.join(__dirname, "/temp"), (err) => {
-	if (err) console.log(err);
-});
-
 const app = express();
 
 app.use("/image/", (req, res, next) => {
